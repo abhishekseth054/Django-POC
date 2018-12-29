@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in to Guest Book</title>
+    <link href="{% static 'guestbook/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'guestbook/bootstrap-theme.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'guestbook/theme.css' %}" rel="stylesheet" />
+    <link href="{% static 'guestbook/sign.css' %}" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <!--{{ form }}-->
+    <form class="form-signin" method="post" action="{% url 'sign' %}">
+        {% csrf_token %}
+        <h2 class="form-signin-heading">Sign in to Guest Book</h2>
+        <div class="form-group">
+            <label for="inputName" class="sr-only">Name</label>
+            <!--<input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus/>-->
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label for="comment" class="sr-only">Comment:</label>
+            <!--<textarea class="form-control" rows="5" id="comment" placeholder="Comments" required ></textarea>-->
+            {{ form.comment }}
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign</button>
+    </form>
+
+</div>
+</body>
+</html>
